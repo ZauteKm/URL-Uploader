@@ -22,9 +22,26 @@ ALL CREDITS GOES TO THE BELOVED DEVELOPERS :)
 
 **Upgrade** your subscription for [@AnyDLBot](https://telegram.dog/AnyDLBot) without having to run anything on your own
 
-#### Deploy to Heroku
+## Config Vars 🤖
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://www.heroku.com/deploy?template=https://github.com/ZauteKm/URL-Uploader)
+- `API_HASH:` Get this value from [my.telegram.org](https://my.telegram.org) or [@UseTGzKBot <img src="https://telegra.ph/file/23d7c928f000aee982a4a.jpg" width="30" height="30">](https://telegram.dog/UseTGzKbot).
+
+- `APP_ID:` Get this value from [my.telegram.org](https://my.telegram.org) or [@UseTGzKBot <img src="https://telegra.ph/file/23d7c928f000aee982a4a.jpg" width="30" height="30">](https://telegram.dog/UseTGzKbot).
+
+- `TG_BOT_TOKEN:` Get the bot token from [Bot Father <img src="https://telegra.ph/file/8d80c13110506bf1cb58e.jpg" width="30" height="30">](https://telegram.dog/BotFather)
+
+- `OWNER_ID:` Get your user id from [@DingdiBot <img src="https://telegra.ph/file/6ac108a0030f3cf8dac94.jpg" width="30" height="30">](https://telegram.dog/DingdiBot) or [@UseTGidBot <img src="https://telegra.ph/file/fe85b1027cfd657f2f44b.jpg" width="30" height="30">](https://telegram.dog/UseTGidBot)
+
+- `CHAT_BASE_TOKEN` Your chat base token, as a string from [chatbase.com <img src="https://telegra.ph/file/8e26e137595ffee3ed1f4.jpg" width="30" height="30">](https://chatbase.com)
+
+- `AUTH_USERS` Allow only pre-defined users to use this bot Get From [@TGPyRoBot <img src="https://telegra.ph/file/14f9e7c35e646c249ddd3.jpg" width="30" height="30">](https://telegram.dog/TGPyRoBot)
+
+- `UPDATE_CHANNEL` For Force Subscribe. Paste your Update channel USERNAME (without @)..
+
+## Deploy to heroku 🗳
+Press the button Deploy to heroku and give the values for the config vars. 👇
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/ZauteKm/URL-Uploader)
 
 #### Run in your VPS
 ```sh
