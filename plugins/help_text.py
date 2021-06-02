@@ -39,14 +39,14 @@ async def help_user(bot, update):
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup(
             [[
-                  InlineKeyboardButton('👥 Group', url='https://telegram.me/ZauteSupport'),
+                  InlineKeyboardButton('🗣️ Feedback', url='https://telegram.me/ZauteBot'),
                   InlineKeyboardButton(' Channel 📢', url='https://telegram.me/TGBotSzK')
                   ],[
-                  InlineKeyboardButton('🗣 Feedback', url='https://telegram.me/ZauteBot'),
+                  InlineKeyboardButton('🙄 Source', url='https://githup.com/ZauteKm/URL-Uploader'),
                   InlineKeyboardButton('Bot Lists 🤖', url='https://t.me/TG_BotList/37'),
                   InlineKeyboardButton('Music 👨‍🎤', url='https://t.me/joinchat/7gSUxv6vgQE3M2Fl')
                   ],[
-                  InlineKeyboardButton('🔻 Subscribe Now YouTube 🔻', url='https://youtube.com/c/ZauteKm')
+                  InlineKeyboardButton('🔻 Subscribe Now YouTube 🔻', url='https://youtube.com/playlist?list=PLzkiTywVmsSfmhaDdWNZ5PRmmMKGTIxPJ')
             ]]
         ),
         reply_to_message_id=update.message_id
@@ -76,15 +76,16 @@ async def start(bot, update):
         chat_id=update.chat.id,
         text=Translation.START_TEXT,
         reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        "🤖 Bot Lists", url="https://t.me/TG_BotList/37"
-                    ),
-                    InlineKeyboardButton("Channel 📢", url="https://t.me/TGBotSzK"),
-                ],
-                [InlineKeyboardButton("❤️ Credit my Master ❤️", url="https://t.me/ZauteBot")],
-            ]
+            [[
+                  InlineKeyboardButton('🗣️ Feedback', url='https://telegram.me/ZauteBot'),
+                  InlineKeyboardButton(' Channel 📢', url='https://telegram.me/TGBotSzK')
+                  ],[
+                  InlineKeyboardButton('🙄 Source', url='https://githup.com/ZauteKm/URL-Uploader'),
+                  InlineKeyboardButton('Bot Lists 🤖', url='https://t.me/TG_BotList/37'),
+                  InlineKeyboardButton('Music 👨‍🎤', url='https://t.me/joinchat/7gSUxv6vgQE3M2Fl')
+                  ],[
+                  InlineKeyboardButton('🔻 Subscribe Now YouTube 🔻', url='https://youtube.com/playlist?list=PLzkiTywVmsSfmhaDdWNZ5PRmmMKGTIxPJ')
+            ]]
         ),
         reply_to_message_id=update.message_id
     )
