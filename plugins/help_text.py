@@ -38,17 +38,16 @@ async def help_user(bot, update):
         parse_mode="html",
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton("🗣️ Feedback", url="https://t.me/Zautebot"),
-                    InlineKeyboardButton("Channel 📢", url="https://telegram.me/TGBotSzK")
-              ],[
-                    InlineKeyboardButton("🤖 Bot Lists", url="https://t.me/TG_BotList/37"),
-                    InlineKeyboardButton("Music 👨‍🎤", url="https://t.me/joinchat/7gSUxv6vgQE3M2Fl"),
-                    InlineKeyboardButton("Source 🙄", url="https://githup.com/Zautekm/URL-Uploader")
-              ],[
-                    InlineKeyboardButton("⚜️ Subscribe Now YouTube ⚜️", url='https://youtube.com/playlist?list=PLzkiTywVmsSfmhaDdWNZ5PRmmMKGTIxPJ")],
-            ]
+            [[
+                  InlineKeyboardButton('👥 Group', url='https://telegram.me/ZauteSupport'),
+                  InlineKeyboardButton(' Channel 📢', url='https://telegram.me/TGBotSzK')
+                  ],[
+                  InlineKeyboardButton('🗣 Feedback', url='https://telegram.me/ZauteBot'),
+                  InlineKeyboardButton('Bot Lists 🤖', url='https://t.me/TG_BotList/37'),
+                  InlineKeyboardButton('Music 👨‍🎤', url='https://t.me/joinchat/7gSUxv6vgQE3M2Fl')
+                  ],[
+                  InlineKeyboardButton('🔻 Subscribe Now YouTube 🔻', url='https://youtube.com/c/ZauteKm')
+            ]]
         ),
         reply_to_message_id=update.message_id
     )
