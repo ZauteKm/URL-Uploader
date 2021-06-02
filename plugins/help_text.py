@@ -40,12 +40,14 @@ async def help_user(bot, update):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton(
-                        "🤖 Bot Lists", url="https://t.me/TG_BotList/37"
-                    ),
-                    InlineKeyboardButton("Channel 📢", url="https://t.me/TGBotSzK"),
-                ],
-                [InlineKeyboardButton("❤️ Credit my Master ❤️", url="https://t.me/ZauteBot")],
+                    InlineKeyboardButton("🗣️ Feedback", url="https://t.me/Zautebot"),
+                    InlineKeyboardButton("Channel 📢", url="https://telegram.me/TGBotSzK")
+              ],[
+                    InlineKeyboardButton("🤖 Bot Lists", url="https://t.me/TG_BotList/37"),
+                    InlineKeyboardButton("Music 👨‍🎤", url="https://t.me/joinchat/7gSUxv6vgQE3M2Fl"),
+                    InlineKeyboardButton("Source 🙄", url="https://githup.com/Zautekm/URL-Uploader")
+              ],[
+                    InlineKeyboardButton("⚜️ Subscribe Now YouTube ⚜️", url='https://youtube.com/playlist?list=PLzkiTywVmsSfmhaDdWNZ5PRmmMKGTIxPJ")],
             ]
         ),
         reply_to_message_id=update.message_id
