@@ -2,7 +2,7 @@
 
 ALL CREDITS GOES TO THE BELOVED DEVELOPERS :)
 
-#### If you find any bugs, report to [Mr. Zaute](https://telegram.dog/zautebot)
+#### If you find any bugs, report to [InFoJosTel](https://telegram.dog/InFoJosTelGroup)
 
 ### Features
 
@@ -39,11 +39,11 @@ ALL CREDITS GOES TO THE BELOVED DEVELOPERS :)
 ## Deploy to heroku 🗳
 Press the button Deploy to heroku and give the values for the config vars. 👇
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/ZauteKm/URL-Uploader)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/InFoJosTel/URL-Uploader)
 
 #### Run in your VPS
 ```sh
-git clone https://github.com/ZauteKm/URL-Uploader
+git clone https://github.com/InFoJosTel/URL-Uploader
 cd URL-Uploader
 pip3 install -r requirements.txt
 # <Create config.py appropriately>
