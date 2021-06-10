@@ -39,12 +39,12 @@ async def help_user(bot, update):
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup(
             [[
-                  InlineKeyboardButton('🗣️ Feedback', url='https://telegram.me/InFoJosTelGroup'),
-                  InlineKeyboardButton(' Channel 📢', url='https://telegram.me/InFoJosTel')
+                  InlineKeyboardButton('👥 Group', url='https://t.me/iZaute/5'),
+                  InlineKeyboardButton(' Channel 📢', url='https://t.me/iZaute/6')
                   ],[
-                  InlineKeyboardButton('🙄 Source', url='https://githup.com/InFoJosTel/URL-Uploader'),
-                  InlineKeyboardButton('Bot Lists 🤖', url='https://t.me/TG_BotList/37'),
-                  InlineKeyboardButton('Music 👨‍🎤', url='https://t.me/joinchat/7gSUxv6vgQE3M2Fl')
+                  InlineKeyboardButton('🙄 Source', url='https://t.me/ZauteKm/390'),
+                  InlineKeyboardButton('Bot Lists 🤖', url='https://t.me/iZaute/8'),
+                  InlineKeyboardButton('GitHup 🤪', url='https://githup.com/ZauteKm')
                   ],[
                   InlineKeyboardButton('🔻 Subscribe Now YouTube 🔻', url='https://youtube.com/playlist?list=PLzkiTywVmsSfmhaDdWNZ5PRmmMKGTIxPJ')
             ]]
@@ -77,12 +77,12 @@ async def start(bot, update):
         text=Translation.START_TEXT,
         reply_markup=InlineKeyboardMarkup(
             [[
-                  InlineKeyboardButton('🗣️ Feedback', url='https://telegram.me/InFoJosTelGroup'),
-                  InlineKeyboardButton(' Channel 📢', url='https://telegram.me/InFoJosTel')
+                  InlineKeyboardButton('👥 Group', url='https://t.me/iZaute/5'),
+                  InlineKeyboardButton(' Channel 📢', url='https://t.me/iZaute/6')
                   ],[
-                  InlineKeyboardButton('🙄 Source', url='https://githup.com/InFoJosTel/URL-Uploader'),
-                  InlineKeyboardButton('Bot Lists 🤖', url='https://t.me/TG_BotList/37'),
-                  InlineKeyboardButton('Music 👨‍🎤', url='https://t.me/joinchat/7gSUxv6vgQE3M2Fl')
+                  InlineKeyboardButton('🙄 Source', url='https://t.me/ZauteKm/390'),
+                  InlineKeyboardButton('Bot Lists 🤖', url='https://t.me/iZaute/8'),
+                  InlineKeyboardButton('GitHup 🤪', url='https://githup.com/ZauteKm')
                   ],[
                   InlineKeyboardButton('🔻 Subscribe Now YouTube 🔻', url='https://youtube.com/playlist?list=PLzkiTywVmsSfmhaDdWNZ5PRmmMKGTIxPJ')
             ]]
