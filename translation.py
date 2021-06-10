@@ -8,10 +8,10 @@ Hits /help for more details..
 ➟ <b>Made by @ZauteKm</b>"""
     RENAME_403_ERR = "Sorry. You are not permitted to rename this file."
     ABS_TEXT = " Please don't be selfish."
-    UPGRADE_TEXT = "<b>👉 Create own Clone Bot.. </b>  \n\n<a href='https://github.com/ZauteKm/URL-Uploader'>Click here, Fork and Deploy!!</a>"
-    FORMAT_SELECTION = "Select the desired format: <a href='{}'>file size might be approximate</a> \nIf you want to set custom thumbnail, send photo before or quickly after tapping on any of the below buttons.\nYou can use /deletethumbnail to delete the auto-generated thumbnail."
-    SET_CUSTOM_USERNAME_PASSWORD = """If you want to download premium videos, provide in the following format:
-URL | filename | username | password"""
+    UPGRADE_TEXT = "<b>👉 Create own Clone Bot.. </b>  \n\n<a href='https://youtu.be/T6FYjPW1cBE'>Click here, Fork and Deploy!!</a>"
+    FORMAT_SELECTION = "<b>Select the desired format:</b> <a href='{}'>file size might be approximate</a> \n<b>If you want to set custom thumbnail,</b> send photo before or quickly after tapping on any of the below buttons.\nYou can use /deletethumbnail to delete the auto-generated thumbnail."
+    SET_CUSTOM_USERNAME_PASSWORD = """<b>If you want to download premium videos,</b> provide in the following format:
+<b>URL | filename | username | password</b>"""
     NOYES_URL = "@robot URL detected. Please use https://shrtz.me/PtsVnf6 and get me a fast URL so that I can upload to Telegram, without me slowing down for other users."
     DOWNLOAD_START = "<b>📥 Downloading...</b>"
     UPLOAD_START = "<b>Uploading now... 📤</b>"
@@ -67,7 +67,7 @@ Send /me to know current plan details
     EXTRACT_ZIP_INTRO_ONE = "Send a compressed file first, Then reply /unzip command to the file."
     EXTRACT_ZIP_INTRO_THREE = "Analyzing received file. ⚠️ This might take some time. Please be patient. "
     UNZIP_SUPPORTED_EXTENSIONS = ("zip", "rar")
-    EXTRACT_ZIP_ERRS_OCCURED = "Sorry. Errors occurred while processing compressed file. Please check everything again twice, and if the issue persists, report this to <a href='https://telegram.dog/MizoHelpDesK'>@MizoHelpDesK</a>"
+    EXTRACT_ZIP_ERRS_OCCURED = "Sorry. Errors occurred while processing compressed file. Please check everything again twice, and if the issue persists, report this to <a href='https://t.me/iZaute/5'>Support Group</a>"
     EXTRACT_ZIP_STEP_TWO = """Select file_name to upload from the below options.
 You can use /rename command after receiving file to rename it with custom thumbnail support."""
     CANCEL_STR = "Process Cancelled"
