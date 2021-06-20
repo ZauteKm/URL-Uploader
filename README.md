@@ -2,7 +2,7 @@
 
 ALL CREDITS GOES TO THE BELOVED DEVELOPERS :)
 
-#### If you find any bugs, report to [InFoJosTel](https://telegram.dog/InFoJosTelGroup)
+#### If you find any bugs, report to [Zaute Km](https://t.me/iZaute/5)
 
 ### Features
 
@@ -39,7 +39,7 @@ ALL CREDITS GOES TO THE BELOVED DEVELOPERS :)
 ## Deploy to heroku 🗳
 Press the button Deploy to heroku and give the values for the config vars. 👇
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/InFoJosTel/URL-Uploader)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/ZauteKm/URL-Uploader)
 
 #### Run in your VPS
 ```sh
