@@ -15,8 +15,8 @@
     "uploader"
   ],
   "success_url": "https://telegram.dog/uploadzkbot",
-  "website": "https://github.com/InFoJosTel/URL-Uploader",
-  "repository": "https://github.com/InFoJosTel/URL-Uploader",
+  "website": "https://github.com/ZauteKm/URL-Uploader",
+  "repository": "https://github.com/ZauteKm/URL-Uploader",
   "env": {
     "WEBHOOK": {
       "description": "Setting this to ANYTHING will enable webhooks when in env mode",
