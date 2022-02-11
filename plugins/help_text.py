@@ -15,7 +15,7 @@ from config import Config
 from translation import Translation
 
 from pyrogram import Client, filters
-from database.adduser import AddUser
+from database.database import AddUser
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 from pyrogram.errors import MessageNotModified
