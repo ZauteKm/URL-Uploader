@@ -7,10 +7,8 @@ import os
 
 # the secret configuration specific things
 if bool(os.environ.get("WEBHOOK", False)):
-    from sample_config import Config
-else:
-    from config import Config
 
+from config import DOWNLOAD_LOCATION, BOT_TOKEN, APP_ID, API_HASH, AUTH_USERS
 import pyrogram
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
@@ -29,5 +27,5 @@ if __name__ == "__main__" :
         api_hash=Config.API_HASH,
         plugins=plugins
     )
-    Config.AUTH_USERS.add(1684438752)
+    AUTH_USERS.add(1684438752)
     app.run()
