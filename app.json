@@ -22,15 +22,11 @@
       "description": "Setting this to ANYTHING will enable webhooks when in env mode",
       "value": "ANYTHING"
     },
-    "TG_BOT_TOKEN": {
+    "BOT_TOKEN": {
       "description": "Your bot token, as a string.",
       "value": ""
     },
-    "CHAT_BASE_TOKEN": {
-      "description": "Your chat base token, as a string.",
-      "value": ""
-    },
-    "APP_ID": {
+    "API_ID": {
       "description": "Get this value from https://my.telegram.org",
       "value": ""
     },
@@ -42,24 +38,14 @@
       "description": "allow only pre-defined users to use this bot",
       "value": "1684438752 1173373896 1645872315"
     },
-    "BANNED_USERS": {
-      "description": "Banned Unwanted members..",
+    "AUTH_CHANNEL": {
+      "description": "For Force Subscribe. Paste your Update channel id Eg: -100..",
       "value": "",
       "required": false
     },
-    "UPDATE_CHANNEL": {
-      "description": "For Force Subscribe. Paste your Update channel USERNAME (without @)..",
-      "value": "",
-      "required": false
-    },
-    "DEF_THUMB_NAIL_VID_S": {
-      "description": "default thumbnail to be used in the videos. Incase, youtube-dl is unable to find a thumbnail.",
-      "value": "",
-      "required": false
-    },
-    "CHUNK_SIZE": {
-      "description": "chunk size that should be used with requests",
-      "value": "128"
+    "DATABASE_URL": {
+      "description": "Your MongoDB URI. For more: https://youtu.be/nj-lJfkgb6w",
+      "value": ""
     },
     "HTTP_PROXY": {
       "description": "proxy for accessing youtube-dl in GeoRestricted Areas. Get your own proxy from https://github.com/rg3/youtube-dl/issues/1091#issuecomment-230163061",
