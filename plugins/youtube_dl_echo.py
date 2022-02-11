@@ -10,13 +10,13 @@ logger = logging.getLogger(__name__)
 import requests, urllib.parse, filetype, os, time, shutil, tldextract, asyncio, json, math
 
 from config import Config
-from database.adduser import AddUser
+from database.database import AddUser
 from translation import Translation
 from plugins.forcesub import ForceSub
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 from pyrogram import filters
-from pyrogram import Client as Clinton
-from database.access import clinton
+from pyrogram import Client, filters
+from database.database import db
 from helper_funcs.display_progress import humanbytes
 from helper_funcs.help_uploadbot import DownLoadFile
 from helper_funcs.display_progress import progress_for_pyrogram, humanbytes, TimeFormatter
@@ -25,7 +25,7 @@ from hachoir.parser import createParser
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import UserNotParticipant
 
-@Clinton.on_message(filters.private & ~filters.via_bot & filters.regex(pattern=".*http.*"))
+@Client.on_message(filters.private & ~filters.via_bot & filters.regex(pattern=".*http.*"))
 async def echo(bot, update):
     await AddUser(bot, update)
     FSub = await ForceSub(bot, update)
