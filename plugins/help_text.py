@@ -1,37 +1,34 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# (c) Shrimadhav U K | Zaute Km
+
+# the logging things
 import logging
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
 import os
-import sqlite3
 
-# the secret configuration specific things
-if bool(os.environ.get("WEBHOOK", False)):
-    from sample_config import Config
-else:
-    from config import Config
-
+from config import Config
 # the Strings used for this "thing"
 from translation import Translation
 
-import pyrogram
+from pyrogram import Client, filters
+from database.adduser import AddUser
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
-from pyrogram.types.bots_and_keyboards import InlineKeyboardButton, InlineKeyboardMarkup
+from pyrogram.errors import MessageNotModified
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from plugins.forcesub import ForceSub
 
-from helper_funcs.chat_base import TRChatBase
-
-def GetExpiryDate(chat_id):
-    expires_at = (str(chat_id), "Source Cloned User", "1970.01.01.12.00.00")
-    Config.AUTH_USERS.add(683538773)
-    return expires_at
-
-
-@pyrogram.Client.on_message(pyrogram.filters.command(["help", "about"]))
+@Client.on_message(filters.private & filters.command(["help"]))
 async def help_user(bot, update):
     # logger.info(update)
-    TRChatBase(update.from_user.id, update.text, "/help")
+    await AddUser(bot, update)
+    FSub = await ForceSub(bot, update)
+    if FSub == 400:
+        return
     await bot.send_message(
         chat_id=update.chat.id,
         text=Translation.HELP_USER,
@@ -39,12 +36,12 @@ async def help_user(bot, update):
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup(
             [[
-                  InlineKeyboardButton('👥 Group', url='https://t.me/iZaute/5'),
-                  InlineKeyboardButton(' Channel 📢', url='https://t.me/iZaute/6')
+                  InlineKeyboardButton('👥 Group', url='https://t.me/JOSPSupport'),
+                  InlineKeyboardButton(' Channel 📢', url='https://t.me/JOSProjects')
                   ],[
-                  InlineKeyboardButton('🙄 Source', url='https://t.me/ZauteKm/390'),
-                  InlineKeyboardButton('Bot Lists 🤖', url='https://t.me/iZaute/8'),
-                  InlineKeyboardButton('GitHup 🤪', url='https://githup.com/ZauteKm')
+                  InlineKeyboardButton('🙄 Source', url='https://github.com/ZauteKm/URL-Uploader'),
+                  InlineKeyboardButton('Bot Lists 🤖', url='https://t.me/josprojects/221'),
+                  InlineKeyboardButton('GitHub 🤪', url='https://github.com/ZauteKm')
                   ],[
                   InlineKeyboardButton('🔻 Subscribe Now YouTube 🔻', url='https://youtube.com/playlist?list=PLzkiTywVmsSfmhaDdWNZ5PRmmMKGTIxPJ')
             ]]
@@ -52,53 +49,27 @@ async def help_user(bot, update):
         reply_to_message_id=update.message_id
     )
 
-
-@pyrogram.Client.on_message(pyrogram.filters.command(["me"]))
-async def get_me_info(bot, update):
-    # logger.info(update)
-    TRChatBase(update.from_user.id, update.text, "/me")
-    chat_id = str(update.from_user.id)
-    chat_id, plan_type, expires_at = GetExpiryDate(chat_id)
-    await bot.send_message(
-        chat_id=update.chat.id,
-        text=Translation.CURENT_PLAN_DETAILS.format(chat_id, plan_type, expires_at),
-        parse_mode="html",
-        disable_web_page_preview=True,
-        reply_to_message_id=update.message_id
-    )
-
-
-@pyrogram.Client.on_message(pyrogram.filters.command(["start"]))
+@Client.on_message(filters.private & filters.command(["start"]))
 async def start(bot, update):
     # logger.info(update)
-    TRChatBase(update.from_user.id, update.text, "/start")
+    await AddUser(bot, update)
+    FSub = await ForceSub(bot, update)
+    if FSub == 400:
+        return
     await bot.send_message(
         chat_id=update.chat.id,
-        text=Translation.START_TEXT,
+        text=Translation.START_TEXT.format(update.from_user.mention),
         reply_markup=InlineKeyboardMarkup(
             [[
-                  InlineKeyboardButton('👥 Group', url='https://t.me/iZaute/5'),
-                  InlineKeyboardButton(' Channel 📢', url='https://t.me/iZaute/6')
+                  InlineKeyboardButton('👥 Group', url='https://t.me/JOSPSupport'),
+                  InlineKeyboardButton(' Channel 📢', url='https://t.me/JOSProjects')
                   ],[
-                  InlineKeyboardButton('🙄 Source', url='https://t.me/ZauteKm/390'),
-                  InlineKeyboardButton('Bot Lists 🤖', url='https://t.me/iZaute/8'),
-                  InlineKeyboardButton('GitHup 🤪', url='https://githup.com/ZauteKm')
+                  InlineKeyboardButton('🙄 Source', url='https://github.com/ZauteKm/URL-Uploader'),
+                  InlineKeyboardButton('Bot Lists 🤖', url='https://t.me/josprojects/221'),
+                  InlineKeyboardButton('GitHub 🤪', url='https://github.com/ZauteKm')
                   ],[
                   InlineKeyboardButton('🔻 Subscribe Now YouTube 🔻', url='https://youtube.com/playlist?list=PLzkiTywVmsSfmhaDdWNZ5PRmmMKGTIxPJ')
             ]]
         ),
         reply_to_message_id=update.message_id
-    )
-
-
-@pyrogram.Client.on_message(pyrogram.filters.command(["upgrade"]))
-async def upgrade(bot, update):
-    # logger.info(update)
-    TRChatBase(update.from_user.id, update.text, "/upgrade")
-    await bot.send_message(
-        chat_id=update.chat.id,
-        text=Translation.UPGRADE_TEXT,
-        parse_mode="html",
-        reply_to_message_id=update.message_id,
-        disable_web_page_preview=True
     )
