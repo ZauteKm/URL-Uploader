@@ -11,7 +11,7 @@ from pyrogram import filters
 from pyrogram import Client, filters
 
 from helper_funcs.display_progress import progress_for_pyrogram
-
+from plugins.forcesub import ForceSub
 from pyrogram.errors import UserNotParticipant, UserBannedInChannel 
 from pyrogram.types import ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton
 from hachoir.metadata import extractMetadata
