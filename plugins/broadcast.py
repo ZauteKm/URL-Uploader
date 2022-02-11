@@ -3,7 +3,7 @@
 # (c) Zaute Km
 
 import traceback, datetime, asyncio, string, random, time, os, aiofiles, aiofiles.os
-from database.databas3 import db
+from database.database import db
 from pyrogram import Clienr, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, PeerIdInvalid
