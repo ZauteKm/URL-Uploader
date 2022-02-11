@@ -1,63 +1,41 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# (c) Shrimadhav U K || Zaute Km
+
+# the logging things
 import logging
-logging.basicConfig(level=logging.DEBUG,
-                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-import asyncio
-import json
-import math
-import os
-import time
-from PIL import Image
-# the secret configuration specific things
-if bool(os.environ.get("WEBHOOK", False)):
-    from sample_config import Config
-else:
-    from config import Config
+import requests, urllib.parse, filetype, os, time, shutil, tldextract, asyncio, json, math
 
-# the Strings used for this "thing"
+from config import Config
+from database.adduser import AddUser
 from translation import Translation
-
-import pyrogram
+from plugins.forcesub import ForceSub
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
-
-from helper_funcs.chat_base import TRChatBase
+from pyrogram import filters
+from pyrogram import Client as Clinton
+from database.access import clinton
 from helper_funcs.display_progress import humanbytes
 from helper_funcs.help_uploadbot import DownLoadFile
-
+from helper_funcs.display_progress import progress_for_pyrogram, humanbytes, TimeFormatter
+from hachoir.metadata import extractMetadata
+from hachoir.parser import createParser
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from pyrogram.errors import UserNotParticipant, UserBannedInChannel
+from pyrogram.errors import UserNotParticipant
 
-@pyrogram.Client.on_message(pyrogram.filters.regex(pattern=".*http.*"))
+@Clinton.on_message(filters.private & ~filters.via_bot & filters.regex(pattern=".*http.*"))
 async def echo(bot, update):
-    if update.from_user.id in Config.BANNED_USERS:
-        await update.reply_text("You are B A N N E D 🤣🤣🤣🤣")
+    await AddUser(bot, update)
+    FSub = await ForceSub(bot, update)
+    if FSub == 400:
         return
-    TRChatBase(update.from_user.id, update.text, "/echo")
-    update_channel = Config.UPDATE_CHANNEL
-    if update_channel:
-        try:
-            user = await bot.get_chat_member(update_channel, update.chat.id)
-            if user.status == "kicked":
-               await update.reply_text("🤭 Sorry Dude, You are **B A N N E D 🤣🤣🤣**")
-               return
-        except UserNotParticipant:
-            #await update.reply_text(f"Join @{update_channel} To Use Me")
-            await update.reply_text(
-                text="**Join My Updates Channel to use ME 😎 🤭**",
-                reply_markup=InlineKeyboardMarkup([
-                    [ InlineKeyboardButton(text="Join My Updates Channel", url=f"https://t.me/{update_channel}")]
-              ])
-            )
-            return
-        except Exception:
-            await update.reply_text("Something Wrong. Contact @zautebot")
-            return
-    logger.info(update.from_user)
-    url = update.text
+    imog = await update.reply_text("**Processing... ⚡**", reply_to_message_id=update.message_id)
     youtube_dl_username = None
     youtube_dl_password = None
     file_name = None
+    url = update.text
     if "|" in url:
         url_parts = url.split("|")
         if len(url_parts) == 2:
@@ -97,7 +75,7 @@ async def echo(bot, update):
                 url = url[o:o + l]
     if Config.HTTP_PROXY != "":
         command_to_exec = [
-            "youtube-dl",
+            "yt-dlp",
             "--no-warnings",
             "--youtube-skip-dash-manifest",
             "-j",
@@ -106,7 +84,7 @@ async def echo(bot, update):
         ]
     else:
         command_to_exec = [
-            "youtube-dl",
+            "yt-dlp",
             "--no-warnings",
             "--youtube-skip-dash-manifest",
             "-j",
@@ -258,31 +236,10 @@ async def echo(bot, update):
                 )
             ])
         reply_markup = InlineKeyboardMarkup(inline_keyboard)
-        # logger.info(reply_markup)
-        thumbnail = Config.DEF_THUMB_NAIL_VID_S
-        thumbnail_image = Config.DEF_THUMB_NAIL_VID_S
-        if "thumbnail" in response_json:
-            if response_json["thumbnail"] is not None:
-                thumbnail = response_json["thumbnail"]
-                thumbnail_image = response_json["thumbnail"]
-        thumb_image_path = DownLoadFile(
-            thumbnail_image,
-            Config.DOWNLOAD_LOCATION + "/" +
-            str(update.from_user.id) + ".webp",
-            Config.CHUNK_SIZE,
-            None,  # bot,
-            Translation.DOWNLOAD_START,
-            update.message_id,
-            update.chat.id
-        )
-        if os.path.exists(thumb_image_path):
-            im = Image.open(thumb_image_path).convert("RGB")
-            im.save(thumb_image_path.replace(".webp", ".jpg"), "jpeg")
-        else:
-            thumb_image_path = None
+        await imog.delete(True)
         await bot.send_message(
             chat_id=update.chat.id,
-            text=Translation.FORMAT_SELECTION.format(thumbnail) + "\n" + Translation.SET_CUSTOM_USERNAME_PASSWORD,
+            text=Translation.FORMAT_SELECTION + "\n" + Translation.SET_CUSTOM_USERNAME_PASSWORD,
             reply_markup=reply_markup,
             parse_mode="html",
             reply_to_message_id=update.message_id
@@ -305,9 +262,10 @@ async def echo(bot, update):
             )
         ])
         reply_markup = InlineKeyboardMarkup(inline_keyboard)
+        await imog.delete(True)
         await bot.send_message(
             chat_id=update.chat.id,
-            text=Translation.FORMAT_SELECTION.format(""),
+            text=Translation.FORMAT_SELECTION,
             reply_markup=reply_markup,
             parse_mode="html",
             reply_to_message_id=update.message_id
