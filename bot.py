@@ -4,11 +4,7 @@ logging.basicConfig(level=logging.DEBUG,
 logger = logging.getLogger(__name__)
 
 import os
-
-# the secret configuration specific things
-if bool(os.environ.get("WEBHOOK", False)):
-
-from config import DOWNLOAD_LOCATION, BOT_TOKEN, APP_ID, API_HASH, AUTH_USERS
+from config import Config
 import pyrogram
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
@@ -27,5 +23,5 @@ if __name__ == "__main__" :
         api_hash=Config.API_HASH,
         plugins=plugins
     )
-    AUTH_USERS.add(1684438752)
+    Config.AUTH_USERS.add(1684438752)
     app.run()
