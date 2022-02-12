@@ -26,8 +26,8 @@ class Config(object):
     # your telegram id
     # Array to store users who are authorized to use the bot
     AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "").split())
-    SESSION_NAME = "JOSProjects"
     # database uri (mongodb)
+    DATABASE_NAME = "JOSProjects"
     DATABASE_URL = os.environ.get("DATABASE_URL", "")
     MAX_RESULTS = "50"
     AUTH_CHANNEL = os.environ.get("AUTH_CHANNEL", "-100")
