@@ -2,7 +2,7 @@ import datetime
 import motor.motor_asyncio
 from pyrogram import Client
 from pyrogram.types import Message
-from config import DATABASE_URI, DATABASE_NAME
+from config import Config
 
 
 class Database:
@@ -46,4 +46,4 @@ async def AddUser(bot: Client, update: Message):
     if not await db.is_user_exist(update.from_user.id):
            await db.add_user(update.from_user.id)
 
-db = Database(DATABASE_URI, DATABASE_NAME)
+db = Database(Config.DATABASE_URL, Config.DATABASE_NAME)
