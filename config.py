@@ -25,7 +25,7 @@ class Config(object):
     PROCESS_MAX_TIMEOUT = 3600
     # your telegram id
     # Array to store users who are authorized to use the bot
-    AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "").split())
+    AUTH_USERS = int(os.environ.get("AUTH_USERS", "1684438752"))
     # database uri (mongodb)
     DATABASE_NAME = "JOSProjects"
     DATABASE_URL = os.environ.get("DATABASE_URL", "")
