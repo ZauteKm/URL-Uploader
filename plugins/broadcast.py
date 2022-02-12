@@ -4,11 +4,11 @@
 
 import traceback, datetime, asyncio, string, random, time, os, aiofiles, aiofiles.os
 from database.database import db
-from pyrogram import Clienr, filters
+from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, PeerIdInvalid
 
-from config import AUTH_USERS
+from config import Config
 broadcast_ids = {}
 
 async def send_msg(user_id, message):
@@ -30,7 +30,7 @@ async def send_msg(user_id, message):
 
 @Client.on_message(filters.private & filters.command('broadcast') & filters.reply)
 async def broadcast_(c, m):
-    if m.from_user.id != AUTH_USERS:
+    if m.from_user.id != Config.AUTH_USERS:
         return
     all_users = await db.get_all_users()
     
