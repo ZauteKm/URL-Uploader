@@ -14,7 +14,7 @@ import os
 from PIL import Image
 import time
 
-from config import DOWNLOAD_LOCATION
+from config import Config
 # the Strings used for this "thing"
 from translation import Translation
 from pyrogram import Client, filters
@@ -23,6 +23,7 @@ from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 from database.database import AddUser
+from database.database import db
 from helper_funcs.help_Nekmo_ffmpeg import take_screen_shot
 from plugins.forcesub import ForceSub
 
@@ -56,7 +57,7 @@ async def viewthumbnail(bot, update):
         await update.reply_text(text=f"No Thumbnail found 🤒")
 
 async def Gthumb01(bot, update):
-    thumb_image_path = DOWNLOAD_LOCATION + "/" + str(update.from_user.id) + ".jpg"
+    thumb_image_path = Config.DOWNLOAD_LOCATION + "/" + str(update.from_user.id) + ".jpg"
     db_thumbnail = await db.get_thumbnail(update.from_user.id)
     if db_thumbnail is not None:
         thumbnail = await bot.download_media(message=db_thumbnail, file_name=thumb_image_path)
