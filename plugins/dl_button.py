@@ -16,7 +16,7 @@ import shutil
 import time
 from datetime import datetime
 # the secret configuration specific things
-from config import DOWNLOAD_LOCATION, CHUNK_SIZE
+from config import Config
 # the Strings used for this "thing"
 from translation import Translation
 from plugins.custom_thumbnail import *
@@ -33,7 +33,7 @@ async def ddl_call_back(bot, update):
     cb_data = update.data
     # youtube_dl extractors
     tg_send_type, youtube_dl_format, youtube_dl_ext = cb_data.split("=")
-    thumb_image_path = DOWNLOAD_LOCATION + \
+    thumb_image_path = Config.DOWNLOAD_LOCATION + \
         "/" + str(update.from_user.id) + ".jpg"
     youtube_dl_url = update.message.reply_to_message.text
     custom_file_name = os.path.basename(youtube_dl_url)
@@ -74,7 +74,7 @@ async def ddl_call_back(bot, update):
         chat_id=update.message.chat.id,
         message_id=update.message.message_id
     )
-    tmp_directory_for_each_user = DOWNLOAD_LOCATION + "/" + str(update.from_user.id)
+    tmp_directory_for_each_user = Config.DOWNLOAD_LOCATION + "/" + str(update.from_user.id)
     if not os.path.isdir(tmp_directory_for_each_user):
         os.makedirs(tmp_directory_for_each_user)
     download_directory = tmp_directory_for_each_user + "/" + custom_file_name
@@ -237,7 +237,7 @@ File Size: {}""".format(url, humanbytes(total_length))
                 if not chunk:
                     break
                 f_handle.write(chunk)
-                downloaded += CHUNK_SIZE
+                downloaded += Config.CHUNK_SIZE
                 now = time.time()
                 diff = now - start
                 if round(diff % 5.00) == 0 or downloaded == total_length:
